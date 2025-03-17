@@ -32,9 +32,9 @@ public class Programa {
 		double precoPorHora = sc.nextDouble();
 		System.out.println("Entre com o preço por dia:");
 		double precoPorDia = sc.nextDouble();
-		
+																					  
 		ServicoAluguel servicoAluguel = new ServicoAluguel(precoPorHora, precoPorDia, new ServicoImpostoBrasil());
-		
+																						// upcasting taxService - injeção de dependência por construtor
 		servicoAluguel.processarFatura(aluguel);
 		
 		System.out.println("FATURA:");

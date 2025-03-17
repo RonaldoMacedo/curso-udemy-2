@@ -10,7 +10,7 @@ public class ServicoAluguel {
 	private Double precoPorHora;
 	private Double precoPorDia;
 
-	private ServicoImposto servicoImposto;
+	private ServicoImposto servicoImposto; // <-- dependência com a interface //
 
 	public ServicoAluguel(Double precoPorHora, Double precoPorDia, ServicoImposto servicoImposto) {
 		super();
