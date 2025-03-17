@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 import model.entities.AluguelDoCarro;
 import model.entities.Veiculo;
+import model.services.ServicoAluguel;
+import model.services.ServicoImpostoBrasil;
 
 public class Programa {
 
@@ -25,6 +27,20 @@ public class Programa {
 		LocalDateTime fim = LocalDateTime.parse(sc.nextLine(), dtm);
 		
 		AluguelDoCarro aluguel = new AluguelDoCarro(inicio, fim, new Veiculo(modeloCarro));
+		
+		System.out.println("Entre com o preço por hora:");
+		double precoPorHora = sc.nextDouble();
+		System.out.println("Entre com o preço por dia:");
+		double precoPorDia = sc.nextDouble();
+		
+		ServicoAluguel servicoAluguel = new ServicoAluguel(precoPorHora, precoPorDia, new ServicoImpostoBrasil());
+		
+		servicoAluguel.processarFatura(aluguel);
+		
+		System.out.println("FATURA:");
+		System.out.println("Pagamento básico: " + aluguel.getFatura().getPagamentoBasico());
+		System.out.println("Imposto: " + aluguel.getFatura().getImposto());
+		System.out.println("Pagamento total: " + aluguel.getFatura().getPagamentoTotal());
 		
 		sc.close();
 
