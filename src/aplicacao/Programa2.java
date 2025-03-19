@@ -8,6 +8,7 @@ import java.util.Scanner;
 import model.entities.Contrato;
 import model.entities.Parcela;
 import model.services.ServicoContrato;
+import model.services.ServicoPayPal;
 
 public class Programa2 {
 
@@ -30,7 +31,7 @@ public class Programa2 {
 		System.out.print("Digite quantas parcelas: ");
 		int n = sc.nextInt();
 		
-		ServicoContrato servicoContrato = new ServicoContrato(null);
+		ServicoContrato servicoContrato = new ServicoContrato(new ServicoPayPal());
 		servicoContrato.processarContrato(contrato, n);
 		
 		System.out.println("PARCELAS:");
