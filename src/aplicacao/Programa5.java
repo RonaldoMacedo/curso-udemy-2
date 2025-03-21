@@ -7,23 +7,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import model.entities.Funcionario;
+
 public class Programa5 {
 
 	public static void main(String[] args) {
 		
-		List<String> lista = new ArrayList<>();
-		String caminho = "C:\\temp\\in.txt";
+		List<Funcionario> lista = new ArrayList<>();
+		String caminho = "C:\\temp\\in.csv";
 		
 		try(BufferedReader br = new BufferedReader(new FileReader(caminho))) {
 			
-			String nome = br.readLine();
-			while(nome != null) {
-				lista.add(nome);
-				nome = br.readLine();
+			String funcionarioCSV = br.readLine();
+			while(funcionarioCSV != null) {
+				String[] campos = funcionarioCSV.split(",");
+				lista.add(new Funcionario(campos[0], Double.parseDouble(campos[1])));
+				funcionarioCSV = br.readLine();
 			}
 			Collections.sort(lista); // <-- uma forma de ordenar uma coleção
-			for(String s : lista) {
-				System.out.println(s);
+			for(Funcionario func : lista) {
+				System.out.println(func.getNome() + ", " + func.getSalario());
 			}
 				
 		} catch (IOException e) {
