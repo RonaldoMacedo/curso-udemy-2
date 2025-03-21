@@ -29,7 +29,7 @@ public class Funcionario implements Comparable<Funcionario> {
 
 	@Override
 	public int compareTo(Funcionario func) {
-		return salario.compareTo(func.getSalario());
+		return -salario.compareTo(func.getSalario());
 	}
 
 }
